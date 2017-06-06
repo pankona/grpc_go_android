@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.pankona.stringservice";
+
+package stringservice;
+
+// The Supervisor service definition.
+service StringService {
+  rpc GetLargeString (Empty) returns (LargeString) {}
+}
+
+message Empty {
+}
+
+message LargeString {
+    repeated string string_list = 1;
+}
