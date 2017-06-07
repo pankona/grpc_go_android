@@ -39,7 +39,7 @@ public class GoWrapperTest extends TestCase {
         GoWrapper go = new GoWrapper();
         int port = go.initializeGRPCServer();
         assertEquals(port, 50053);
-        Log.d("", go.getLargeString());
+        go.Hello("GoWrapperTest");
         GRPCClient client = new GRPCClient(50053);
         Log.d("", client.getString().toString());
         go.finalizeGRPCServer();

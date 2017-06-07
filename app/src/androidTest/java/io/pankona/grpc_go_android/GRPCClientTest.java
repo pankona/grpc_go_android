@@ -32,6 +32,8 @@ public class GRPCClientTest extends TestCase {
     @Test
     public void testGetStringViaGRPC() throws Exception {
         GoWrapper go = new GoWrapper();
+        go.Hello("testGetStringViaGRPC");
+
         int port = go.initializeGRPCServer();
         assertEquals(port, 50053);
         GRPCClient client = new GRPCClient(port);
@@ -39,10 +41,9 @@ public class GRPCClientTest extends TestCase {
         long startTime = System.currentTimeMillis();
         for (int i = 0; i < 1000; i++) {
             List<String> result = client.getString();
-            Log.d("", result.toString());
         }
         long endTime = System.currentTimeMillis();
-        Log.d("", "Total execution time: " + (endTime-startTime) + "ms");
+        assertTrue("Total execution time: " + (endTime-startTime) + "ms", false);
 
         go.finalizeGRPCServer();
     }
@@ -50,14 +51,13 @@ public class GRPCClientTest extends TestCase {
     @Test
     public void testGetStringViaBinding() throws Exception {
         GoWrapper go = new GoWrapper();
+        go.Hello("testGetStringViaBinding");
 
         long startTime = System.currentTimeMillis();
-
         for (int i = 0; i < 1000; i++) {
             String result = go.getLargeString();
-            Log.d("", result);
         }
         long endTime = System.currentTimeMillis();
-        Log.d("", "Total execution time: " + (endTime-startTime) + "ms");
+        assertTrue("Total execution time: " + (endTime-startTime) + "ms", false);
     }
 }
